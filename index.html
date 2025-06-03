@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Looker Studio Auto Refresh</title>
+
+  <style>
+  .zoom-container {
+    width: 100vw;  /* or your desired width */
+    height: 100vh; /* or your desired height */
+    overflow: hidden; /* hide scrollbars */
+    position: relative;
+  }
+  .zoom-container iframe {
+    transform: scale(0.8); /* scale down to 80% */
+    transform-origin: top left; /* keep it aligned top-left */
+    width: 125%;  /* adjust width to compensate scale */
+    height: 125%; /* adjust height accordingly */
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="zoom-container">
+  <iframe src="https://lookerstudio.google.com/embed/reporting/0a81ff76-9c81-4dbc-8ffb-dee1db89776b/page/DpgMF" allowfullscreen></iframe>
+</div>
+
+  <script>
+    // Reload the whole page every 30 seconds
+    setTimeout(() => location.reload(), 60000);
+  </script>
+</body>
+</html>
