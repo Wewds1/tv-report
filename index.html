@@ -11,12 +11,13 @@
     position: relative;
   }
   .zoom-container iframe {
-    transform: scale(0.8); /* scale down to 80% */
-    transform-origin: top left; /* keep it aligned top-left */
-    width: 125%;  /* adjust width to compensate scale */
-    height: 125%; /* adjust height accordingly */
+    transform: scale(1); /* scale down to 80% */
+    margin: auto;
+    margin-left: 100px;
+    width: 90%;  /* adjust width to compensate scale */
+    height: 100%; /* adjust height accordingly */
     border: none;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
   }
@@ -26,12 +27,12 @@
 <body>
 
 <div class="zoom-container">
-  <iframe src="https://lookerstudio.google.com/embed/reporting/0a81ff76-9c81-4dbc-8ffb-dee1db89776b/page/DpgMF" allowfullscreen></iframe>
+    <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/0a81ff76-9c81-4dbc-8ffb-dee1db89776b/page/DpgMF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 </div>
 
   <script>
     // Reload the whole page every 30 seconds
-    setTimeout(() => location.reload(), 30000);
+    setTimeout(() => location.reload(), 300000);
   </script>
 </body>
 </html>
