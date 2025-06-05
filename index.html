@@ -2,37 +2,57 @@
 <html>
 <head>
   <title>Looker Studio Auto Refresh</title>
-
   <style>
-  .zoom-container {
-    width: 100vw;  /* or your desired width */
-    height: 100vh; /* or your desired height */
-    overflow: hidden; /* hide scrollbars */
-    position: relative;
-  }
-  .zoom-container iframe {
-    transform: scale(1.05); /* scale down to 80% */
-    margin: auto;
-    width: 95%;  /* adjust width to compensate scale */
-    height: 100%; /* adjust height accordingly */
-    border: none;
-    position: relative;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-</style>
-
+    .zoom-container {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .zoom-container iframe {
+      transform: scale(1.05);
+      margin: auto;
+      width: 95%;
+      height: 100%;
+      border: none;
+      position: relative;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
 
 <div class="zoom-container">
-    <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/0a81ff76-9c81-4dbc-8ffb-dee1db89776b/page/DpgMF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+  <iframe src="https://lookerstudio.google.com/embed/reporting/0a81ff76-9c81-4dbc-8ffb-dee1db89776b/page/DpgMF"></iframe>
 </div>
 
-  <script>
-    // Reload the whole page every 30 seconds
-    setTimeout(() => location.reload(), 120000);
-  </script>
+<script>
+  // Auto-refresh page every 2 minutes
+  setTimeout(() => location.reload(), 120000);
+
+  // Attempt to keep screen awake using Wake Lock API
+  let wakeLock = null;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      console.log('Wake Lock is active.');
+    } catch (err) {
+      console.error(`${err.name}, ${err.message}`);
+    }
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (wakeLock !== null && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+
+  requestWakeLock();
+</script>
+
 </body>
 </html>
+  git config --global user.email "daveallenborja@gmail.com"
+  git config --global user.name "wewds1"
